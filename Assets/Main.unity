@@ -1195,7 +1195,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 876893335}
-        m_MethodName: SetInitialFireAngle
+        m_MethodName: SetInitialFireTime
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1817,6 +1817,7 @@ MonoBehaviour:
   - {fileID: 615077405}
   defaultFireSpeed: 35
   defaultFireAngle: 45
+  defaultFireTime: 1
 --- !u!1 &900501557
 GameObject:
   m_ObjectHideFlags: 0
