@@ -49,6 +49,14 @@ public static class ProjectileMath
         return speed;
     }
 
+    public static bool LaunchAngleSpeed(float distance, float yOffset, float gravity, float t, out float angle, out float speed)
+    {
+        float operand = (yOffset + 0.5f * gravity * t * t);
+        angle = distance > 0 ? Mathf.Atan(operand / distance) : 0;
+        speed = t > 0 ? Mathf.Sqrt(distance * distance + operand * operand) / t : 0;
+        return true;
+    }
+
     /// <summary>
     /// Calculates how long a projectile will stay in the air before reaching its target
     /// </summary>

@@ -70,7 +70,19 @@ public class CannonController : MonoBehaviour
 
         projectileArc.UpdateArc(speed, distance, Physics.gravity.magnitude, currentAngle, direction, targetInRange);
         SetTurret(direction, currentAngle * Mathf.Rad2Deg);
+        currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle, -yOffset, Physics.gravity.magnitude);
+    }
 
+    public void SetTargetWithTime(Vector3 point, float t)
+    {
+        Vector3 direction = point - firePoint.position;
+        float yOffset = direction.y;
+        direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
+        float distance = direction.magnitude;
+        ProjectileMath.LaunchAngleSpeed(distance, yOffset, Physics.gravity.magnitude, t, out currentAngle, out currentSpeed);
+
+        projectileArc.UpdateArc(currentSpeed, distance, Physics.gravity.magnitude, currentAngle, direction, true);
+        SetTurret(direction, currentAngle * Mathf.Rad2Deg);
         currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle, -yOffset, Physics.gravity.magnitude);
     }
 
